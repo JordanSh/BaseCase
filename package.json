@@ -1,0 +1,78 @@
+{
+  "name": "basecase",
+  "displayName": "BaseCase",
+  "description": "Change text casing style live just like you change language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.showMenu"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.showMenu",
+        "title": "Show Base Case Style Menu"
+      },
+      {
+        "command": "extension.camelCase",
+        "title": "Convert Text to camelCase"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.showMenu",
+        "key": "cmd+b",
+        "mac": "cmd+b"
+      },
+      {
+        "command": "extension.camelCase",
+        "key": "c",
+        "mac": "c",
+        "when": "extension.showMenuVisible"
+      },
+      {
+        "command": "extension.uppercase",
+        "key": "u",
+        "mac": "u",
+        "when": "extension.showMenuVisible"
+      },
+      {
+        "command": "extension.screamingCase",
+        "key": "s",
+        "mac": "s",
+        "when": "extension.showMenuVisible"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.88.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
