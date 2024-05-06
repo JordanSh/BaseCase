@@ -49,8 +49,8 @@ The Base Case Extension supports both Windows and macOS.
 
 ## Contributing
 
-Contributions are welcome! If you encounter any bugs or have suggestions for new features, please open an issue on the [GitHub repository](https://github.com/your/repository).
+Contributions are welcome! If you encounter any bugs or have suggestions for new features, please open an issue on the [GitHub repository](https://github.com/JordanSh/BaseCase).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
