@@ -53,4 +53,4 @@ Contributions are welcome! If you encounter any bugs or have suggestions for new
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT License](https://github.com/JordanSh/BaseCase/blob/main/LICENSE.md)
