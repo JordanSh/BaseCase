@@ -1,71 +1,56 @@
-# basecase README
+# Base Case 🐍🍡🐪
 
-This is the README for your extension "basecase". After writing up a brief description, we recommend including the following sections.
+## Description
 
-## Features
+The Base Case Extension for Visual Studio Code provides convenient keyboard shortcuts to convert live input into different casing styles commonly used in programming.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Support Case Styles
 
-For example if there is an image subfolder under your extension project workspace:
+- **UPPER_CASE**
+- **kebab-case**
+- **camelCase**
+- **snake_case**
+- **dot.case**
 
-\!\[feature X\]\(images/feature-x.png\)
+## Installation
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Open Visual Studio Code
+2. Go to the Extensions view
+3. Search for "Base Case"
+4. Click Install
 
-## Requirements
+## Usage
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Open the Command Palette by pressing `Ctrl+Shift+P` (Windows) or `Cmd+Shift+P` (Mac)
+- Select "Base Case: Show Menu" and press `Enter` to open the case styles menu
+- Select the desired casing style from the menu using the arrow keys and press `Enter` to apply it
+- Alternatively, use the following keyboard shortcuts:
+  - **⌘+B U** (Mac) or **Ctrl+B U** (Windows): Convert input to UPPER_CASE
+  - **⌘+B K** (Mac) or **Ctrl+B K** (Windows): Convert input to kebab-case
+  - **⌘+B C** (Mac) or **Ctrl+B C** (Windows): Convert input to camelCase
+  - **⌘+B S** (Mac) or **Ctrl+B S** (Windows): Convert input to snake_case
+  - **⌘+B D** (Mac) or **Ctrl+B D** (Windows): Convert input to dot.case
+  - **⌘+B B** (Mac) or **Ctrl+B B** (Windows): Stop using the Base Case Extension
 
-## Extension Settings
+After selecting the case styling, just type normally and the input will change live. For example, selecting the camelCase and typing: `some function that does calcs` will output `someFunctionThatDoesCalcs`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Escape Characters
 
-For example:
+- Double space: Removes the previous character and stops the extension.
+- Enter: Drop to new line and stops the extension.
+- Space + =: Removes the previous character and stops the extension.
+  - Useful for formats like `SOME_CONST = "some-id"`.
+- Just =: Does not remove the previous character but still stops the extension.
+  - Useful for formats like `SOME_FORMAT=some-id`.
 
-This extension contributes the following settings:
+## Supported Platforms
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+The Base Case Extension supports both Windows and macOS.
 
-## Known Issues
+## Contributing
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Contributions are welcome! If you encounter any bugs or have suggestions for new features, please open an issue on the [GitHub repository](https://github.com/your/repository).
 
-## Release Notes
+## License
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

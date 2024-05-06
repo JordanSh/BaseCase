@@ -9,9 +9,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:extension.showMenu"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -20,33 +18,67 @@
         "title": "Show Base Case Style Menu"
       },
       {
-        "command": "extension.camelCase",
-        "title": "Convert Text to camelCase"
+        "command": "extension.convertToCamelCase",
+        "title": "Convert Input to camelCase"
+      },
+      {
+        "command": "extension.convertToUpperCase",
+        "title": "Convert Input to UPPER_CASE"
+      },
+      {
+        "command": "extension.convertToSnakeCase",
+        "title": "Convert Input to snake_case"
+      },
+      {
+        "command": "extension.convertToDotCase",
+        "title": "Convert Input to dot.case"
+      },
+      {
+        "command": "extension.stopBaseCase",
+        "title": "Stops Base Case"
       }
     ],
     "keybindings": [
       {
         "command": "extension.showMenu",
-        "key": "cmd+b",
-        "mac": "cmd+b"
+        "key": "cmd+shift+b",
+        "mac": "cmd+shift+b"
       },
       {
-        "command": "extension.camelCase",
-        "key": "c",
-        "mac": "c",
-        "when": "extension.showMenuVisible"
+        "command": "extension.convertToCamelCase",
+        "key": "cmd+b c",
+        "mac": "cmd+b c",
+        "when": "editorTextFocus && !editorReadonly"
       },
       {
-        "command": "extension.uppercase",
-        "key": "u",
-        "mac": "u",
-        "when": "extension.showMenuVisible"
+        "command": "extension.convertToUpperCase",
+        "key": "cmd+b u",
+        "mac": "cmd+b u",
+        "when": "editorTextFocus && !editorReadonly"
       },
       {
-        "command": "extension.screamingCase",
-        "key": "s",
-        "mac": "s",
-        "when": "extension.showMenuVisible"
+        "command": "extension.convertToKebabCase",
+        "key": "cmd+b k",
+        "mac": "cmd+b k",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "extension.convertToSnakeCase",
+        "key": "cmd+b s",
+        "mac": "cmd+b s",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "extension.convertToDotCase",
+        "key": "cmd+b d",
+        "mac": "cmd+b d",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "extension.stopBaseCase",
+        "key": "cmd+b b",
+        "mac": "cmd+b b",
+        "when": "editorTextFocus && !editorReadonly"
       }
     ]
   },
