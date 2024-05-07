@@ -7,7 +7,9 @@ import {
   toDotCase,
 } from "./caseHandlers";
 
-// Function to handle keyboard input
+const os = require("os");
+const cmdKey = os.platform() === "win32" ? "Ctrl" : "⌘";
+
 function handleInput(
   text: string,
   caseStyle: string,
@@ -36,8 +38,9 @@ function handleInput(
 }
 
 const changeInput = (selectedCase: string) => {
-  // Dispose existing listeners
+  // dispose existing listeners
   disposeListeners();
+
   if (selectedCase !== "base case") {
     vscode.window.showInformationMessage(`Using ${selectedCase}`);
   }
@@ -49,20 +52,20 @@ const changeInput = (selectedCase: string) => {
     return;
   }
 
-  let isExtensionChange = false; // Flag to track changes made by the extension
+  let isExtensionChange = false; // flag to track changes made by the extension
   let inputText = "";
-  let previousInput = ""; // Track previous input
+  let previousInput = "";
 
   const listener = vscode.workspace.onDidChangeTextDocument((event) => {
     activeListeners.push(listener);
 
     if (isExtensionChange) {
       return;
-    } // Ignore changes made by the extension itself
+    } // prevents infinite extension usage
 
     const newText = event.contentChanges[0].text;
 
-    // Check if the previous input was a space and the current input is also a space
+    // dispose on double space and remove the previous space
     if (previousInput === " " && newText === " ") {
       editor.edit((editBuilder) => {
         const startPosition = event.contentChanges[0].range.start.translate(
@@ -96,7 +99,7 @@ const changeInput = (selectedCase: string) => {
 
     // dispose when pressing enter
     // dispose when pressing "=" without space before it, but without removing the preivous char
-    // useful for formats like "SOME_FORMAT=123abc-123"
+    // useful for formats like "SOME_CONST=123123"
     if (newText === "\n" || newText === "=") {
       disposeListeners();
       vscode.window.showInformationMessage("Back to base case");
@@ -113,10 +116,10 @@ const changeInput = (selectedCase: string) => {
 
     inputText += convertedText;
 
-    isExtensionChange = true; // Set flag to true to indicate extension-initiated change
+    isExtensionChange = true; // set flag to true to indicate extension-initiated change
     editor
       .edit((editBuilder) => {
-        // Replace the range of the original input with an empty string
+        // replace the range of the original input with an empty string
         const startPosition = event.contentChanges[0].range.start.translate(
           0,
           newText.length
@@ -124,61 +127,61 @@ const changeInput = (selectedCase: string) => {
         const endPosition = event.contentChanges[0].range.start;
         editBuilder.replace(new vscode.Range(startPosition, endPosition), "");
 
-        // Insert the converted text
+        // insert the converted text
         editBuilder.insert(event.contentChanges[0].range.start, convertedText);
       })
       .then(() => {
-        isExtensionChange = false; // Reset flag after the change is applied
+        isExtensionChange = false; // reset flag after the change is applied
       });
 
-    // Update previous input
+    // update previous input
     previousInput = newText;
   });
 };
 
-// Array to store active listeners
+// array to store active listeners
 const activeListeners: vscode.Disposable[] = [];
 
-// Function to dispose active listeners
+// function to dispose active listeners
 function disposeListeners() {
   activeListeners.forEach((listener) => listener.dispose());
-  activeListeners.length = 0; // Clear the array
+  activeListeners.length = 0;
 }
 
 const casesMenu: (vscode.QuickPickItem & { commandName: string })[] = [
   {
     commandName: "convertToUpperCase",
     label: "UPPER_CASE",
-    description: "(⌘+B U) Constants and configuration keys",
+    description: `(${cmdKey}+B U) Constants and configuration keys`,
   },
   {
     commandName: "convertToKebabCase",
     label: "kebab-case",
-    description: "(⌘+B K) URLs, file names and IDs",
+    description: `(${cmdKey}+B K) URLs, file names and IDs`,
   },
   {
     commandName: "convertToCamelCase",
     label: "camelCase",
-    description: "(⌘+B C) JavaScript variables and functions",
+    description: `(${cmdKey}+B C) JavaScript variables and functions`,
   },
   {
     commandName: "convertToSnakeCase",
     label: "snake_case",
-    description: "(⌘+B S) Python variable and function names",
+    description: `(${cmdKey}+B S) Python variable and function names`,
   },
   {
     commandName: "convertToDotCase",
     label: "dot.case",
-    description: "(⌘+B D) File extensions and package names",
+    description: `(${cmdKey}+B D) File extensions and package names`,
   },
   {
     commandName: "stopBaseCase",
     label: "Stop Base Case",
-    description: "(⌘+B B) Stops the Base Case Extension",
+    description: `(${cmdKey}+B B) Stops the Base Case Extension`,
   },
 ];
 
-// Activate extension
+// activate extension
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "extension.showMenu",
@@ -207,8 +210,8 @@ export function activate(context: vscode.ExtensionContext) {
   });
 }
 
-// Deactivate extension
+// deactivate extension
 export function deactivate() {
-  // Dispose active listeners when the extension is deactivated
+  // dispose active listeners when the extension is deactivated
   disposeListeners();
 }
