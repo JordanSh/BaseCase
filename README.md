@@ -1,4 +1,4 @@
-# Base Case 🐍🍡🐪
+# BaseCase 🐍🍡🐪
 
 The Base Case Extension for Visual Studio Code provides convenient keyboard shortcuts to convert live keyboard input into different casing styles commonly used in programming.
 
@@ -14,7 +14,7 @@ The Base Case Extension for Visual Studio Code provides convenient keyboard shor
 
 1. Open Visual Studio Code
 2. Go to the Extensions view
-3. Search for "Base Case"
+3. Search for "BaseCase"
 4. Click Install
 
 ## Usage

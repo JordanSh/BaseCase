@@ -7,7 +7,7 @@
     "url": "https://github.com/JordanSh/BaseCase.git"
   },
   "description": "The Base Case Extension for Visual Studio Code provides convenient keyboard shortcuts to convert live input into different casing styles commonly used in programming.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.88.0"
   },
